@@ -9,32 +9,36 @@
 
 <body>
   <div class="container">
-    <div class="item1">
 
+
+    <!-- our table-->
+    <div class="item1">
       <table style="width: 100%">
         <tr class="group1">
           <th class="item">Brand</th>
           <th class="item">Flavor</th>
           <th class="item">Price</th>
           <th class="item">Alcohol Content</th>
+          <th class="item">Pints</th>
           <th>Options</th>
         </tr>
-        dsfdfd
+
         <tr *ngFor="let currentKeg of kegs">
           <td class="item">{{currentKeg.brand}}</td>
           <td class="item">{{currentKeg.flavor}}</td>
           <td class="item">{{currentKeg.pricePerPint}}</td>
           <td class="item">{{currentKeg.alcoholContent}}</td>
+          <td class="item">{{currentKeg.pint}}</td>
           <td class="item">
-            <button (click)= "editKeg(currentKeg)">Edit</button>
-            <button>Sold</button>
+            <button (click)="editKeg(currentKeg)">
+              Edit</button>
+            <button (click)="drankPint(currentKeg)">Sold</button>
             <button>View</button>
           </td>
         </tr>
-
-
       </table>
     </div>
+    <!--Editing Section-->
     <div *ngIf="selectedKeg">
       <input [(ngModel)]="selectedKeg.brand" type="text">
       <input [(ngModel)]="selectedKeg.flavor" type="text">
@@ -42,6 +46,21 @@
       <input [(ngModel)]="selectedKeg.alcoholContent" type="text">
       <button (click)="finishedEditing()">Done</button>
     </div>
+
+
+    <!--Adding New Keg-->
+    <button (click)="turnAddNewOn()">Add New Keg</button>
+
+    <div *ngIf="boolAddNew">
+      <input [(ngModel)]="kegBrand" placeholder="Brand">
+      <input [(ngModel)]="kegFlavor" placeholder="Flavor">
+      <input [(ngModel)]="kegPrice" placeholder="Price">
+      <input [(ngModel)]="kegAlcContent" placeholder="Alcohol Content">
+
+      <button (click)="addNewKeg(kegBrand, kegFlavor, kegPrice, kegAlcContent)">Submit</button>
+    </div>
+
+
   </div>
 </body>
 
