@@ -7,6 +7,7 @@ import { Keg } from './models/keg';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  kegBrand: string = "brew dr"
   kegs: Keg[] = [
     new Keg('Brew Dr', 'Blueberry Ginger', 4.00, 0.02),
     new Keg('Super Kombucha', 'rasberry lemonade', 5.00, 0.03),
@@ -14,4 +15,13 @@ export class AppComponent {
     new Keg('Crazy Kombucha', 'Chocolate Mint', 3.00, 0.06),
 
   ];
+
+  selectedKeg: Keg = null;
+  editKeg(clickedKeg){
+    this.selectedKeg = clickedKeg;
+  }
+
+  finishedEditing() {
+    this.selectedKeg = null;
+  }
 }

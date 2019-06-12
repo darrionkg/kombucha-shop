@@ -3,6 +3,7 @@ table, th, tr, td {
 
 }
 
+/* grid  */
 .container {
   display: grid;
   grid-template-areas: 
@@ -14,3 +15,11 @@ table, th, tr, td {
 .item1{
   grid-area: table;
 }
+
+/* flex*/
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+}
+

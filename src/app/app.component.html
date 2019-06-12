@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kombucha Store</title>
 </head>
-<body>
-  <div class ="container">
-    <div class ="item1">
-  <table>
-    <tr>
-      <th>Brand</th>
-      <th>Flavor</th>
-      <th>Price</th>
-      <th>Alcohol Content</th>
-    </tr>
-    <div *ngFor="let keg of kegs">
-    <tr>
-      <td>{{keg.brand}}</td>
-      <td>{{keg.flavor}}</td>
-      <td>{{keg.pricePerPint}}</td>
-      <td>{{keg.alcoholContent}}</td>
-    </tr>
-    <button>Edit</button>
-    <button>Sold</button>
-    <button>View</button>
-    </div>
 
-  </table>
-</div>
-</div>
+<body>
+  <div class="container">
+    <div class="item1">
+
+      <table style="width: 100%">
+        <tr class="group1">
+          <th class="item">Brand</th>
+          <th class="item">Flavor</th>
+          <th class="item">Price</th>
+          <th class="item">Alcohol Content</th>
+          <th>Options</th>
+        </tr>
+
+        <tr *ngFor="let currentKeg of kegs">
+          <td class="item">{{currentKeg.brand}}</td>
+          <td class="item">{{currentKeg.flavor}}</td>
+          <td class="item">{{currentKeg.pricePerPint}}</td>
+          <td class="item">{{currentKeg.alcoholContent}}</td>
+          <td class="item">
+            <button (click)= "editKeg(currentKeg)">Edit</button>
+            <button>Sold</button>
+            <button>View</button>
+          </td>
+        </tr>
+
+
+      </table>
+    </div>
+    <div *ngIf="selectedKeg">
+      <input [(ngModel)]="selectedKeg.brand" type="text">
+      <input [(ngModel)]="selectedKeg.flavor" type="text">
+      <input [(ngModel)]="selectedKeg.pricePerPint" type="text">
+      <input [(ngModel)]="selectedKeg.alcoholContent" type="text">
+      <button (click)="finishedEditing()">Done</button>
+    </div>
+  </div>
 </body>
+
 </html>
