@@ -1,0 +1,16 @@
+table, th, tr, td {
+  border: 1px solid black;
+
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 
+  "table table table table table "
+  "table table table table "
+  "table table table table";
+}
+
+.item1{
+  grid-area: table;
+}
