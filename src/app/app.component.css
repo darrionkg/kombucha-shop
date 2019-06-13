@@ -23,3 +23,6 @@ table, th, tr, td {
   align-items: center;
 }
 
+.makeBold {
+  font-weight: bold;
+}

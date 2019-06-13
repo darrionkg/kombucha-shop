@@ -7,6 +7,10 @@ import { Keg } from './models/keg';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // $scope.makeBold = {
+  //   "color" : "red"
+  // }
+  filter: boolean = true;
   kegBrand: string = "";
   kegFlavor: string = "";
   kegPrice: number = null;
@@ -29,10 +33,8 @@ export class AppComponent {
 
   addNewKeg(brand1, flavor1, price1, alcCont1) {
     let submitKeg = new Keg(brand1, flavor1, price1, alcCont1);
-    console.log(submitKeg);
     this.kegs.push(submitKeg);
-    console.log(this.kegs);
-    console.log(this.kegBrand);
+    this.boolAddNew = false;
   }
 
   editKeg(clickedKeg){
@@ -46,4 +48,26 @@ export class AppComponent {
   drankPint(clickedKeg){
     clickedKeg.pint--
   }
-}
+
+  inventoryLow(num){
+    if (num<=50){
+      return "makeBold";
+    }
+    return "";
+  }
+
+  filterByPrice(){
+    
+
+    if(this.filter == false ){
+    this.kegs.sort((a, b) => a.pricePerPint-b.pricePerPint);
+    this.filter = true;
+  }else{
+    this.kegs.sort((a, b) => b.pricePerPint-a.pricePerPint);
+    this.filter = false;
+  }
+   
+  }
+
+ }
+
